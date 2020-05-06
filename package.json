@@ -1,0 +1,23 @@
+{
+  "name": "tastytreat",
+  "version": "1.0.0",
+  "description": "tastry treat online receip project",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/linuxrafiq/tastytreat.git"
+  },
+  "author": "Rafiq",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/linuxrafiq/tastytreat/issues"
+  },
+  "homepage": "https://github.com/linuxrafiq/tastytreat#readme",
+  "devDependencies": {
+    "webpack": "^4.43.0"
+  },
+  "dependencies": {}
+}

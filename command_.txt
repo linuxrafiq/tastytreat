@@ -26,3 +26,6 @@ npm install html-webpack-plugin --save-dev
 
 // install multiple node package using bellow command
 npm install babel-core babel-preset-env babel-loader --save-dev
+->bable-core: core functionaliy of babel compiler
+->babel-preset-env: babel preset will take care of coverting mordern javascript features back to es5
+babel-loader: it will need for webpack to load bable files

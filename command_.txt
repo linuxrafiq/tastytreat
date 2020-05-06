@@ -36,3 +36,6 @@ babel-loader: it will need for webpack to load bable files
 //if we use Promies bable will not able to convert these code to es5 
 //therefore we have to write code for Promies in es5
 npm install babel-polyfill --save
+
+// for http request install
+npm install axios --save

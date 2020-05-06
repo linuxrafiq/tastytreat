@@ -20,3 +20,6 @@ npm istall webpack-dev-server --save-dev
 
 // to start the project by using web pack
 npm run start
+
+// to copy template html from any directory to dist folder must install
+npm install html-webpack-plugin --save-dev

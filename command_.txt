@@ -23,3 +23,6 @@ npm run start
 
 // to copy template html from any directory to dist folder must install
 npm install html-webpack-plugin --save-dev
+
+// install multiple node package using bellow command
+npm install babel-core babel-preset-env babel-loader --save-dev

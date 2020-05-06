@@ -1,3 +1,3 @@
 console.log("Inside test.js");
 
-export default 24;
+export default 990;

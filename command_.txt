@@ -1,0 +1,22 @@
+//to use latest node 
+nvm use node 13.13.0
+//set up npm package
+npm init
+//install webpack as development mode
+npm install webpack --save-dev
+// install live-server globally
+npm install live-server -g
+//to start live-server
+live-server
+
+//to access webpack through command line interface install
+npm install webpack-cli --save-dev
+//for running development mode
+npm run dev 
+// for production
+npm run build
+//installing web pack dev server to automatically relod the page/app and create bundle and run code on browser 
+npm istall webpack-dev-server --save-dev
+
+// to start the project by using web pack
+npm run start

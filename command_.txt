@@ -29,3 +29,10 @@ npm install babel-core babel-preset-env babel-loader --save-dev
 ->bable-core: core functionaliy of babel compiler
 ->babel-preset-env: babel preset will take care of coverting mordern javascript features back to es5
 babel-loader: it will need for webpack to load bable files
+
+// to support those features whcich are in es 6 but not in es 5
+//polyfill means we will write code in es5 for those featurs that is not present in es 6
+//for example 'Promies" are completely new feature in es6 but it's not present in es 5, so we 
+//if we use Promies bable will not able to convert these code to es5 
+//therefore we have to write code for Promies in es5
+npm install babel-polyfill --save

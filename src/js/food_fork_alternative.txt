@@ -1,0 +1,14 @@
+import axios from 'axios'
+
+const key="ca3ff10d4fmsh1275458e5758fbep101e74jsn64e822f6c1b9";
+const query="shredded chicken";
+async function getResult(query, id){
+    const proxy = "pizza";
+     const res = await axios(`https://forkify-api.herokuapp.com/api/search?&q=${query}`);
+    // console.log(res);
+
+     const receip = await axios(`https://forkify-api.herokuapp.com/api/get?rId=${id}`);
+     console.log(receip);
+}
+
+getResult("pizza", 54491);

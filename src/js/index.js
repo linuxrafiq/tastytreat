@@ -14,6 +14,7 @@ const controlSearch =()=>{
     state.search = new Search(query); 
   }
 }
+//event listner to the parent object to delegate the event
 document.querySelector('.search').addEventListener('submit', event=>{
   event.preventDefault();
   controlSearch();

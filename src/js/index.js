@@ -17,14 +17,15 @@ const controlSearch = async()=>{
   if (query){
     // New search object and add to state
     state.search = new Search(query); 
-
+    searchView.clearResults();
     //Prepare UI for results
-
+    searchView.clearInput();
     //Search for recipes 
     await state.search.getResults();
 
     // render results on UI
     console.log(state.search.result );
+    searchView.renderResults(state.search.result);
   }
 }
 //event listner to the parent object to delegate the event

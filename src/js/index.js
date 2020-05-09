@@ -14,9 +14,8 @@ const controlSearch = async()=>{
   //Get the query from view
   console.log("controll search");
 
-  //const query = searchView.getInput();
+  const query = searchView.getInput();
   //testing
-  const query = 'pizza';
 
   console.log(query);
   if (query){
@@ -47,12 +46,6 @@ element.searchForm.addEventListener('submit', event=>{
   controlSearch();
 });
 
-//testing
-window.addEventListener('load', event=>{
-  console.log("submit search");
-  event.preventDefault();
-  controlSearch();
-});
 
 element.searchResPages.addEventListener('click', e=>{
   //Starting with the Element itself, the closest() method traverses parents (heading toward the document root) of the Element until it finds a node that matches the provided selectorString. Will return itself or the matching ancestor. If no such element exists, it returns null.
@@ -70,9 +63,9 @@ const controlRecipe = async ()=>{
     //console.log(id);
     state.recipe = new Recipe(id);
     //testing
-    window.r = state.recipe;
     try {
       await state.recipe.getRecipe();
+      state.recipe.parseIngredients();
       state.recipe.calcTime();
       state.recipe.calcServings();
       console.log(state.recipe);

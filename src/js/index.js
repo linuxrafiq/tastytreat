@@ -14,7 +14,10 @@ const controlSearch = async()=>{
   //Get the query from view
   console.log("controll search");
 
-  const query = searchView.getInput();
+  //const query = searchView.getInput();
+  //testing
+  const query = 'pizza';
+
   console.log(query);
   if (query){
     // New search object and add to state
@@ -24,16 +27,28 @@ const controlSearch = async()=>{
     searchView.clearInput();
     //Search for recipes 
     renderLoader(element.searchRes);
-    await state.search.getResults();
+    try {
+      await state.search.getResults();
+      // render results on UI
+      clearLoader();
+      console.log(state.search.result );
+      searchView.renderResults(state.search.result);
+    } catch (error) {
+      alert(error);
+      clearLoader();
+    }
 
-    // render results on UI
-    clearLoader();
-    console.log(state.search.result );
-    searchView.renderResults(state.search.result);
   }
 }
 //event listner to the parent object to delegate the event
 element.searchForm.addEventListener('submit', event=>{
+  console.log("submit search");
+  event.preventDefault();
+  controlSearch();
+});
+
+//testing
+window.addEventListener('load', event=>{
   console.log("submit search");
   event.preventDefault();
   controlSearch();
@@ -49,13 +64,29 @@ element.searchResPages.addEventListener('click', e=>{
   }
 });
 
-const r = new Recipe(47746);
-console.log(r); 
-r.getRecipe();
-const controlRecipe = ()=>{
+const controlRecipe = async ()=>{
   const id = window.location.hash.replace('#','');
   if(id){
-    console.log(id);
+    //console.log(id);
+    state.recipe = new Recipe(id);
+    //testing
+    window.r = state.recipe;
+    try {
+      await state.recipe.getRecipe();
+      state.recipe.calcTime();
+      state.recipe.calcServings();
+      console.log(state.recipe);
+    } catch (error) {
+      alert(error);
+    }
   }
 }
-window.addEventListener('hashchange', controlRecipe);
+/**
+ * window.addEventListener('hashchange', controlRecipe);
+  window.addEventListener('load', controlRecipe);
+ can be written as
+['hashchange', 'load'].forEach(event => window.addEventListener(event, controlRecipe));
+
+ */
+
+['hashchange', 'load'].forEach(event => window.addEventListener(event, controlRecipe));

@@ -15,10 +15,11 @@ const formateCount = count =>{
         }else{
             const fr = new Fraction(count - int);
             return `${int} ${fr.numerator}/${fr.denominator}` 
-        }
+        } 
     }
     return '?';
 }
+
 const createIngredient = ingredient=>`
 <li class="recipe__item">
     <svg class="recipe__icon">

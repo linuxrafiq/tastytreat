@@ -21,12 +21,7 @@ const state = {};
 window.state = state;
 const controlSearch = async()=>{
   //Get the query from view
-  console.log("controll search");
-
   const query = searchView.getInput();
-  //testing
-
-  console.log(query);
   if (query){
     // New search object and add to state
     state.search = new Search(query); 
@@ -39,7 +34,6 @@ const controlSearch = async()=>{
       await state.search.getResults();
       // render results on UI
       clearLoader();
-      console.log(state.search.result );
       searchView.renderResults(state.search.result);
     } catch (error) {
       alert(error);
@@ -50,7 +44,6 @@ const controlSearch = async()=>{
 }
 //event listner to the parent object to delegate the event
 element.searchForm.addEventListener('submit', event=>{
-  console.log("submit search");
   event.preventDefault();
   controlSearch();
 });
@@ -71,7 +64,6 @@ element.searchResPages.addEventListener('click', e=>{
 const controlRecipe = async ()=>{
   const id = window.location.hash.replace('#','');
   if(id){
-    //console.log(id);
     recipeView.clearRecipe();
     renderLoader(element.recipe);
     if(state.search){
@@ -87,7 +79,6 @@ const controlRecipe = async ()=>{
       clearLoader();
       recipeView.renderRecipe(state.recipe,
       state.likes.isLiked(id));
-      console.log(state.recipe);
     } catch (error) {
       alert(error);
     }
@@ -98,7 +89,6 @@ const controllList = () =>{
   if (!state.list) state.list = new List();
   state.recipe.ingredients.forEach(el =>{
     const item = state.list.addItem(el.count, el.unit, el.ingredient);
-    console.log(item);
     listView.renderItem(item);
   })
 }
@@ -122,7 +112,6 @@ const controllLike = () =>{
   if(!state.likes.isLiked(currentId)){
     const newLike = state.likes.addLike(currentId,
        state.recipe.title, state.recipe.author, state.recipe.img );
-       console.log(newLike);
        likesView.toggleLikeBtn(true);
        
   }else{
@@ -130,6 +119,7 @@ const controllLike = () =>{
     likesView.toggleLikeBtn(false);
     
   }
+  likesView.toggleLikeMenu(state.likes.getNumLikes());
 }
 /**
  * window.addEventListener('hashchange', controlRecipe);

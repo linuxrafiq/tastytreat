@@ -10,6 +10,10 @@ export const toggleLikeBtn = isLiked =>{
      */
     const iconString = isLiked ? 'icon-heart':'icon-heart-outlined';
     //selecting recipe__love first then pikeing the child use element
-    console.log(iconString);
    document.querySelector('.recipe__love use').setAttribute('href', `img/icons.svg#${iconString}`);
 } 
+
+export const toggleLikeMenu = numLikes =>{
+    console.log(element.likeMenu);
+    element.likeMenu.style.visibility = numLikes >0 ? 'visible':'hidden';
+}

@@ -113,11 +113,12 @@ const controllLike = () =>{
     const newLike = state.likes.addLike(currentId,
        state.recipe.title, state.recipe.author, state.recipe.img );
        likesView.toggleLikeBtn(true);
+       likesView.renderLike(newLike);
        
   }else{
     state.likes.deleteLike(currentId);
     likesView.toggleLikeBtn(false);
-    
+    likesView.deleteLike(currentId);
   }
   likesView.toggleLikeMenu(state.likes.getNumLikes());
 }

@@ -123,7 +123,13 @@ const controllLike = () =>{
   }
   likesView.toggleLikeMenu(state.likes.getNumLikes());
 }
-
+// Restore likes of recipies on page load
+window.addEventListener('load', ()=>{
+  state.likes = new Like();
+  state.likes.readStroge();
+  likesView.toggleLikeMenu(state.likes.getNumLikes());
+  state.likes.likes.forEach(like =>likesView.renderLike(like));
+});
 /**
  * window.addEventListener('hashchange', controlRecipe);
   window.addEventListener('load', controlRecipe);

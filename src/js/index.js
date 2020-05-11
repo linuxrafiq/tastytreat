@@ -105,7 +105,8 @@ element.shoping.addEventListener('click', e=>{
 });
 
 //temporary for testing state.likes = new Like();
-state.likes = new Like();
+//state.likes = new Like();
+
 const controllLike = () =>{
   if (!state.likes) state.likes = new Like();
   const currentId = state.recipe.id;
@@ -122,6 +123,7 @@ const controllLike = () =>{
   }
   likesView.toggleLikeMenu(state.likes.getNumLikes());
 }
+
 /**
  * window.addEventListener('hashchange', controlRecipe);
   window.addEventListener('load', controlRecipe);

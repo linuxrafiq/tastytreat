@@ -1,12 +1,14 @@
 import Search from './models/Search';
 import Recipe from './models/Recipe';
 import List from './models/List';
+import Like from './models/Like';
 
 import * as searchView from './views/searchView';
 import * as recipeView from './views/recipeView';
 import * as listView from './views/listView';
 
 import { element, renderLoader, clearLoader, elementString } from './views/base';
+import Likes from './models/Like';
 /** Global state of the app
  * -Search object
  * -Current recipe object
@@ -62,6 +64,8 @@ element.searchResPages.addEventListener('click', e=>{
   }
 });
 
+
+
 const controlRecipe = async ()=>{
   const id = window.location.hash.replace('#','');
   if(id){
@@ -106,6 +110,20 @@ element.shoping.addEventListener('click', e=>{
     state.list.updateCount(id, val);
   }
 });
+
+const controllLike = () =>{
+  if (!state.likes) state.likes = new Like();
+  const currentId = state.recipe.id;
+  if(!state.likes.isLiked(currentId)){
+    const newLike = state.likes.addLike(currentId,
+       state.recipe.title, state.recipe.author, state.recipe.img );
+       console.log(newLike);
+       
+  }else{
+    state.likes.deleteLike(currentId);
+    console.log(state.likes);
+  }
+}
 /**
  * window.addEventListener('hashchange', controlRecipe);
   window.addEventListener('load', controlRecipe);
@@ -131,6 +149,9 @@ element.recipe.addEventListener('click', e=>{
 
   }else if(e.target.matches('.recipe__btn--add, .recipe__btn--add *')){
     controllList();
+  }else if(e.target.matches('.recipe__love, .recipe__love *')){
+    //Line controller
+    controllLike();
   }
 });
 
